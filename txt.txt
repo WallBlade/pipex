@@ -1,0 +1,51 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    txt.txt                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/10/31 16:30:33 by zel-kass          #+#    #+#              #
+#    Updated: 2022/10/31 16:30:34 by zel-kass         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+int	id;
+	int	n;
+	int	x = 10;
+
+	id = fork();
+	while (env[i])
+	{
+		if (PATHS )
+		{
+			split = {"/mnt/nfs/homes/zel-kass/bin" "/mnt/nfs/homes/zel-kass/bin" "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"}
+			while (split[i])
+			{
+				if (access("/mnt/nfs/homes/zel-kass/bin/ls"))
+					good path = split[i];
+			}
+			if !good_path = COMMAND NOT FOUND;
+		}
+	}
+
+	dup2(infile, 0);
+	
+	if (id == 0)
+	{
+		options = {"echo", "-n", "salut"}
+		access("/bin/ls");
+		execve("/bin/echo", option);
+		exit(1)
+	}
+	(void)argc;
+	(void)argv;
+	if (id == 0)
+		x = 15;
+	else
+		n = 6;
+	if (id != 0)
+		sleep(1);
+	for (int i = n; i < n + 5; i++)
+		printf("%d\n", i);
+	return (0);
