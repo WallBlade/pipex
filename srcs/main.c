@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:00:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/10/31 18:00:14 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:32:18 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	int		i;
 	t_data	data;
 
-	i = 0;
 	(void)argc;
 	(void)argv;
+	if (argc >= 5)
+		data.cmd_count = argc - 3;
 	get_paths(envp, &data);
+	get_cmds(argv, &data);
+	int i = 0;
 	while (data.paths[i])
 	{
 		printf("%s\n", data.paths[i]);

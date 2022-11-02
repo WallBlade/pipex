@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:47:39 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/10/31 16:59:31 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:09:19 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 		{
 			if (ft_strncmp(str + i, to_find + j, ft_strlen(to_find)) == 0
 				&& i + ft_strlen(to_find) <= n)
-				return ((char *)str + i);
+				return ((char *)str + i + 5);
 			j++;
 		}
 		i++;
