@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:03 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/02 18:42:24 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/02 22:26:20 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,9 @@ int	get_paths(char **envp, t_data *data)
 	if (!data->paths)
 		return (-1);
 	i = -1;
-	while (env_path[i++])
+	while (env_path[++i])
 		data->paths[i] = ft_strjoin(env_path[i], "/");
-	ft_freetab(env_path, i);
-	return (0);
+	return (ft_freetab(env_path, i), 0);
 }
 
 int	get_cmds(char **argv, t_data *data)
@@ -55,27 +54,36 @@ int	get_cmds(char **argv, t_data *data)
 		i++;
 		j++;
 	}
+	data->cmd[i] = 0;
 	return (0);
 }
 
-// int	check_access(t_data *data)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*path;
-// 	char	**options;
-
-// 	i = 0;
-// 	while (data->cmd[i])
-// 	{
-// 		if (!access(data->cmd[i], F_OK | X_OK))
-// 		{
-// 			options = ft_split(data->cmd[i], ' ');
-// 			j = 0;
-// 			while (data->paths[j])
-// 			{
-// 				path = ft_strjoin(data->paths[i], options[0]);
-// 			}
-// 		}
-// 	}
-// }
+char	*check_access(t_data *data)
+{
+	int		i;
+	int		j;
+	char	*good_path;
+	char	**options;
+	
+	i = 0;
+	while (data->cmd[i] && i < data->cmd_count)
+	{
+		options = ft_split(data->cmd[i], ' ');
+		if (!options)
+			return (NULL);
+		if (access(data->cmd[i], F_OK | X_OK) == -1)
+		{
+			j = 0;
+			while (data->paths[j])
+			{
+				good_path = ft_strjoin(data->paths[j], options[0]);
+				if (access(good_path, F_OK | X_OK) == 0)
+					return (good_path);
+				free(good_path);
+				j++;
+			}
+		}
+		i++;
+	}
+	return (good_path);
+}

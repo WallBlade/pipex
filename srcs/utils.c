@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:17 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/02 18:36:55 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/02 20:14:15 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
-	size_t	len;
+	int	len;
 	char	*dest;
 
 	if (!s1 || !s2)
@@ -35,10 +35,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (dest);
 }
 
-size_t	ft_countwords(char const *str, char sep)
+int	ft_countwords(char const *str, char sep)
 {
-	size_t	i;
-	size_t	count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -56,9 +56,9 @@ size_t	ft_countwords(char const *str, char sep)
 	return (count);
 }
 
-size_t	ft_wordlen(char const *str, char sep, int i)
+int	ft_wordlen(char const *str, char sep, int i)
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
 	while (str[i] && str[i] != sep)
@@ -69,7 +69,7 @@ size_t	ft_wordlen(char const *str, char sep, int i)
 	return (len);
 }
 
-char	**ft_freetab(char **s, size_t n)
+char	**ft_freetab(char **s, int n)
 {
 	while (n > 0)
 	{
@@ -82,9 +82,9 @@ char	**ft_freetab(char **s, size_t n)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	int	i;
+	int	j;
+	int	k;
 	char	**split;
 
 	split = (char **)malloc(sizeof(char *) * (ft_countwords(s, c) + 1));
