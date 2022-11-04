@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:03 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/02 22:26:20 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/04 19:44:43 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,52 +38,65 @@ int	get_paths(char **envp, t_data *data)
 	return (ft_freetab(env_path, i), 0);
 }
 
-int	get_cmds(char **argv, t_data *data)
+void	get_cmds(char **argv, t_cmds **cmds, t_data *data)
 {
 	int	i;
-	int	j;
 
-	i = 0;
-	j = 2;
-	data->cmd = malloc(sizeof(char *) * (data->cmd_count + 1));
-	if (!data->cmd)
-		return (-1);
-	while (argv[j] && i < data->cmd_count)
-	{
-		data->cmd[i] = argv[j];
-		i++;
-		j++;
-	}
-	data->cmd[i] = 0;
-	return (0);
+	i = 1;
+	while (argv[i] && i++ < data->cmd_count)
+		ft_lstadd_back(cmds, ft_lstnew(argv[i], ft_split(argv[i], ' ')));
 }
 
-char	*check_access(t_data *data)
+void	check_access(t_data *data, t_cmds *cmds)
 {
-	int		i;
-	int		j;
-	char	*good_path;
-	char	**options;
+	int	i;
 	
-	i = 0;
-	while (data->cmd[i] && i < data->cmd_count)
+	while (cmds)
 	{
-		options = ft_split(data->cmd[i], ' ');
-		if (!options)
-			return (NULL);
-		if (access(data->cmd[i], F_OK | X_OK) == -1)
+		printf("test\n");
+		cmds = cmds->next;
+		if (access(cmds->cmd, F_OK | X_OK) == -1)
 		{
-			j = 0;
-			while (data->paths[j])
+			i = 0;
+			while (data->paths[i])
 			{
-				good_path = ft_strjoin(data->paths[j], options[0]);
-				if (access(good_path, F_OK | X_OK) == 0)
-					return (good_path);
-				free(good_path);
-				j++;
+				cmds->abs_path = ft_strjoin(data->paths[i], cmds->options[0]);
+				if (access(cmds->abs_path, F_OK | X_OK) == 0)
+					return ;
+				free(cmds->abs_path);
 			}
 		}
-		i++;
+		else if (access(cmds->cmd, F_OK | X_OK) == 0)
+			cmds->abs_path = cmds->cmd;
 	}
-	return (good_path);
 }
+
+// char	*check_access(t_data *data)
+// {
+// 	int		i;
+// 	int		j;
+// 	char	*good_path;
+// 	char	**options;
+	
+// 	i = 0;
+// 	while (data->cmd[i] && i < data->cmd_count)
+// 	{
+// 		options = ft_split(data->cmd[i], ' ');
+// 		if (!options)
+// 			return (NULL);
+// 		if (access(data->cmd[i], F_OK | X_OK) == -1)
+// 		{
+// 			j = 0;
+// 			while (data->paths[j])
+// 			{
+// 				good_path = ft_strjoin(data->paths[j], options[0]);
+// 				if (access(good_path, F_OK | X_OK) == 0)
+// 					return (good_path);
+// 				free(good_path);
+// 				j++;
+// 			}
+// 		}
+// 		i++;
+// 	}
+// 	return (good_path);
+// }

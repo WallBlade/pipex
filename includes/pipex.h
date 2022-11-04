@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:14:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/02 20:29:47 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:42:35 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,16 @@
 typedef	struct s_data
 {
 	int		cmd_count;
-	char	**cmd;
-	char	**paths;	
+	char	**paths;
 }	t_data;
+
+typedef	struct s_cmds
+{
+	char			*cmd;
+	char			*abs_path;
+	char			**options;
+	struct s_cmds	*next;
+}	t_cmds;
 
 
 //------------------    UTILS   ------------------//
@@ -43,10 +50,17 @@ int		ft_strncmp(const char *s1, const char *s2, int n);
 char	*ft_strnstr(const char *str, const char *to_find, int n);
 char	*ft_strdup(char *src);
 
+//------------------    LIST   ------------------//
+
+t_cmds	*ft_lstnew(char *cmd, char **options);
+void	ft_lstadd_back(t_cmds **lst, t_cmds *new);
+void	ft_freelst(t_cmds **cmds);
+
 //------------------    PARSING   ------------------//
 
 int		get_paths(char **envp, t_data *data);
-int		get_cmds(char **argv, t_data *data);
-char	*check_access(t_data *data);
+void	get_cmds(char **argv, t_cmds **cmds, t_data *data);
+void	check_access(t_data *data, t_cmds *cmds);
+
 
 #endif
