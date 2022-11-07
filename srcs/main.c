@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:00:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/04 19:43:50 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:29:07 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,6 @@ int	main(int argc, char **argv, char **envp)
 		return (-1);
 	get_paths(envp, &data);
 	get_cmds(argv, &cmds, &data);
-	// while (cmds->next)
-	// {
-	// 	cmds = cmds->next;
-	// 	printf("cmd = %s\toptions = %s\n", cmds->cmd, cmds->options[1]);
-	// }
-	// printf("options = %s\n", cmds->options[0]);
 	check_access(&data, cmds);
 	while (cmds)
 	{
