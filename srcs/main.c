@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:00:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/07 18:29:07 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:00:36 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	main(int argc, char **argv, char **envp)
 	get_paths(envp, &data);
 	get_cmds(argv, &cmds, &data);
 	check_access(&data, cmds);
+	
 	while (cmds)
 	{
-		printf("%s\n", cmds->abs_path);
+		printf("cmd = %s\toption = %s\tabs_path = %s\n", cmds->cmd, cmds->options[1], cmds->abs_path);
 		cmds = cmds->next;
 	}
 	return (0);

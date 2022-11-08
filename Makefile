@@ -4,7 +4,7 @@ OBJ		=	$(SRC:.c=.o)
 
 CC		=	cc
 RM		=	rm -rf
-CFLAGS	=	-Wall -Werror -Wextra -I./includes
+CFLAGS	=	-Wall -Werror -Wextra -g -I./includes
 
 NAME	=	pipex
 
