@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:03 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/08 12:13:40 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:34:05 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_paths(char **envp, t_data *data)
 		if (path_var)
 		{
 			env_path = ft_split(path_var, ':');
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -53,7 +53,7 @@ void	get_cmds(char **argv, t_cmds **cmds, t_data *data)
 void	check_access(t_data *data, t_cmds *cmds)
 {
 	int	i;
-	
+
 	while (cmds)
 	{
 		if (access(cmds->cmd, F_OK | X_OK) == -1)

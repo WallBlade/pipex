@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:17 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/07 18:27:56 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:19:26 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
-	int	len;
+	int		len;
 	char	*dest;
 
 	if (!s1 || !s2)
@@ -82,9 +82,9 @@ char	**ft_freetab(char **s, int n)
 
 char	**ft_split(char const *s, char c)
 {
-	int	i;
-	int	j;
-	int	k;
+	int		i;
+	int		j;
+	int		k;
 	char	**split;
 
 	split = (char **)malloc(sizeof(char *) * (ft_countwords(s, c) + 1));

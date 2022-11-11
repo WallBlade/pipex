@@ -6,7 +6,7 @@
 #    By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 16:30:33 by zel-kass          #+#    #+#              #
-#    Updated: 2022/11/08 13:57:55 by zel-kass         ###   ########.fr        #
+#    Updated: 2022/11/11 16:52:02 by zel-kass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,4 +64,13 @@ int	id;
 		wait(NULL);
 		printf("\npid = %d\n", pid);
 		printf("I am parent, my pid is = %d\n", getpid());
+	}
+
+		while (cmds)
+	{
+		pid = fork();
+		if (pid == 0)
+			execve(cmds->abs_path, cmds->options, envp);
+		else
+			cmds = cmds->next;
 	}
