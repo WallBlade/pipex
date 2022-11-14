@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:17:59 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/11 16:20:03 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/14 14:56:18 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_cmds	*ft_lstnew(char *cmd, char **options)
 {
 	t_cmds	*cmds;
 
-	cmds = malloc(sizeof(*cmds) * 1);
+	cmds = malloc(sizeof(t_cmds));
 	if (!cmds)
 		return (NULL);
 	cmds->cmd = cmd;

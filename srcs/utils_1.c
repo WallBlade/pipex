@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:47:39 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/11 16:19:37 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:08:55 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_strlen(const char *s)
 {
+	if (!s)
+		return (0);
 	unsigned int	i;
 
 	i = 0;
@@ -57,4 +59,22 @@ char	*ft_strnstr(const char *str, const char *to_find, int n)
 		i++;
 	}
 	return (NULL);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		i;
+	char	*dup;
+
+	dup = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!dup)
+		return (0);
+	i = 0;
+	while (src[i])
+	{
+		dup[i] = src[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

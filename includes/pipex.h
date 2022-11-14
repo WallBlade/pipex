@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:14:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/07 17:57:04 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:28:44 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <sys/wait.h>
+#include <fcntl.h>
 
 typedef	struct s_data
 {
+	int		infile_fd;
+	int		outfile_fd;
+	int		fd[2];
+	int		status1;
+	int		status2;
 	int		cmd_count;
 	char	**paths;
 }	t_data;
@@ -38,9 +44,7 @@ typedef	struct s_cmds
 //------------------    UTILS   ------------------//
 
 char	**ft_split(char const *s, char c);
-int		ft_countwords(char const *str, char sep);
-int		ft_wordlen(char const *str, char sep, int i);
-char	**ft_freetab(char **s, int n);
+void	ft_freetab(char **s);
 char	*ft_strjoin(char *s1, char *s2);
 
 //------------------    UTILS1   ------------------//
@@ -60,7 +64,7 @@ void	ft_freelst(t_cmds **cmds);
 
 int		get_paths(char **envp, t_data *data);
 void	get_cmds(char **argv, t_cmds **cmds, t_data *data);
-void	check_access(t_data *data, t_cmds *cmds);
+int		check_access(t_data *data, t_cmds *cmds);
 
 
 #endif
