@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 15:00:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/15 00:29:37 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/11/14 23:58:47 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/11/15 00:22:26 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+void	file_error(char *file)
 {
-	t_data	data;
-	t_cmds	*cmds;
-
-	if (argc >= 5)
-		data.cmd_count = argc - 3;
-	get_paths(envp, &data);
-	get_cmds(argv, &cmds, &data);
-	exec(&data, cmds, envp);
-
-	return (0);
+	ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd(file, 2);
+	ft_putstr_fd(": No such file or directory\n", 2);
 }

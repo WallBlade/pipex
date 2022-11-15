@@ -1,27 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 15:00:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/15 00:29:37 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/11/14 23:27:58 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/11/14 23:28:13 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
-{
-	t_data	data;
-	t_cmds	*cmds;
-
-	if (argc >= 5)
-		data.cmd_count = argc - 3;
-	get_paths(envp, &data);
-	get_cmds(argv, &cmds, &data);
-	exec(&data, cmds, envp);
-
-	return (0);
-}

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:03 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/14 18:28:37 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/15 00:31:03 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,17 @@ int	check_access(t_data *data, t_cmds *cmds)
 {
 	int	i;
 
-	if (access(cmds->cmd, F_OK | X_OK) == -1)
+	i = 0;
+	while (data->paths[i])
 	{
-		i = 0;
-		while (data->paths[i])
-		{
-			cmds->abs_path = ft_strjoin(data->paths[i], cmds->options[0]);
-			if (access(cmds->abs_path, F_OK | X_OK) == 0)
-				break ;
-			free(cmds->abs_path);
-			cmds->abs_path = NULL;
-			i++;
-		}
+		cmds->abs_path = ft_strjoin(data->paths[i], cmds->options[0]);
+		if (access(cmds->abs_path, F_OK | X_OK) == 0)
+			break ;
+		free(cmds->abs_path);
+		cmds->abs_path = NULL;
+		i++;
 	}
-	else if (access(cmds->cmd, F_OK | X_OK) == 0)
-		cmds->abs_path = cmds->cmd;
+	if (!cmds->abs_path)
+		return (1);
+	return (0);
 }

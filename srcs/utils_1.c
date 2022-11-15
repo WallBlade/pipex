@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:47:39 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/14 15:08:55 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/15 00:16:18 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,18 @@ char	*ft_strdup(char *src)
 	}
 	dup[i] = '\0';
 	return (dup);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (fd < 0 || fd > 1024)
+		return ;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
