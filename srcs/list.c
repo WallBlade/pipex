@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:17:59 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/14 14:56:18 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/15 18:47:44 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	ft_freelst(t_cmds **cmds)
 	len = ft_lstsize(*cmds);
 	while (len > 0)
 	{
+		if ((*cmds)->options)
+			ft_freetab((*cmds)->options);
 		tmp = (*cmds)->next;
 		free(*cmds);
 		(*cmds) = tmp;

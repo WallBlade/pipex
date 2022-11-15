@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:00:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/15 00:29:37 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/15 18:41:56 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	main(int argc, char **argv, char **envp)
 	get_paths(envp, &data);
 	get_cmds(argv, &cmds, &data);
 	exec(&data, cmds, envp);
-
+	ft_freelst(&cmds);
 	return (0);
 }

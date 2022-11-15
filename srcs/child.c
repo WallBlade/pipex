@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:42:57 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/15 00:59:56 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/15 18:41:21 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void	first_child(t_data *data, t_cmds *cmds, char **envp)
 		data->infile_fd = open("infile", O_RDONLY);
 		if (data->infile_fd == -1)
 			file_error("infile");
-		close(data->fd[0]);
+		dup2(data->fd[1], STDOUT_FILENO);
 		dup2(data->infile_fd, 0);
+		close(data->fd[0]);
 		close(data->fd[1]);
 		execve(cmds->abs_path, cmds->options, envp);
 	}
@@ -28,14 +29,14 @@ void	first_child(t_data *data, t_cmds *cmds, char **envp)
 
 void	second_son(t_data *data, t_cmds *cmds, char **envp)
 {
-	if (check_access(data, cmds) == 0)
+	if (check_access(data, cmds->next) == 0)
 	{
-		data->outfile_fd = open("outfile", O_TRUNC | O_CREAT | O_RDWR, 0666);
+		data->outfile_fd = open("outfile", O_TRUNC | O_CREAT | O_RDWR, 0664);
 		if (data->outfile_fd == -1)
 			file_error("outfile");
 		dup2(data->fd[0], STDIN_FILENO);
-		close(data->fd[0]);
 		dup2(data->outfile_fd, 1);
+		close(data->fd[0]);
 		close(data->fd[1]);
 		execve(cmds->next->abs_path, cmds->next->options, envp);
 	}
