@@ -1,4 +1,4 @@
-SRC		=	srcs/main.c srcs/parsing.c srcs/utils.c srcs/utils_1.c srcs/list.c srcs/child.c \
+SRC		=	srcs/main.c srcs/parsing.c srcs/utils.c srcs/utils_1.c srcs/child.c \
 			srcs/init.c srcs/error.c \
 
 OBJ		=	$(SRC:.c=.o)

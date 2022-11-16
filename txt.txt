@@ -6,7 +6,7 @@
 #    By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 16:30:33 by zel-kass          #+#    #+#              #
-#    Updated: 2022/11/14 17:52:57 by zel-kass         ###   ########.fr        #
+#    Updated: 2022/11/16 15:25:22 by zel-kass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,3 +116,28 @@ int	id;
 	close(data.fd[1]);
 	waitpid(pid1, &status, 0);
 	waitpid(pid2, &status, 0);
+
+	\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+	void	exec(t_data *data, t_pip *pip, char **envp)
+{
+	pid_t	pid1;
+	pid_t	pid2;
+
+	if (pipe(data->fd) == -1)
+		return ;
+	pid1 = fork();
+	if (pid1 < 0)
+		return ;
+	else if (pid1 == 0)
+		first_child(data, pip, envp);
+	pid2 = fork();
+	if (pid2 < 0)
+		return ;
+	else if (pid2 == 0)
+		second_son(data, pip, envp);
+	close(data->fd[0]);
+	close(data->fd[1]);
+	waitpid(pid1, NULL, 0);
+	waitpid(pid2, NULL, 0);
+}
