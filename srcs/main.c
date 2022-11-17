@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:00:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/16 18:22:39 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:00:22 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv, char **envp)
 	if (!pip)
 		return (-1);
 	exec(data, pip, envp);
-	ft_freetab(data->paths);
 	wpid = WEXITSTATUS(data->wpid);
+	free_struct(data, pip);
 	return (wpid);
 }

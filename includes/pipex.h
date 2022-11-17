@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:14:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/16 18:22:30 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:33:50 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,8 @@ void	exec(t_data *data, t_pip *pip, char **envp);
 
 void	file_error(char *file);
 void	cmd_error(char *cmd);
+void	check_status(int wpid, char *cmd, char *file);
+void	wait_for_all(t_data *data, t_pip *pip);
+void	free_struct(t_data *data, t_pip *pip);
 
 #endif

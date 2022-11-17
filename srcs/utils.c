@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:17 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/16 10:43:16 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:21:35 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[++j])
 		dest[i++] = s2[j];
 	dest[i] = '\0';
+	if (s1)
+		free(s1);
 	return (dest);
 }
 

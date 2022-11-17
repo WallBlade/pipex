@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:03 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/16 18:27:51 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:02:46 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ int	check_access(t_data *data, t_pip *pip, int n)
 		pip[n].abs_path = NULL;
 		i++;
 	}
+	if (access(pip[n].options[0], F_OK) == 0 &&
+		access(pip[n].options[0], X_OK) == -1)
+		exit(126);
 	if (!pip[n].abs_path)
 		exit(127);
 	return (0);
