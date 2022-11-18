@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:09:17 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/17 17:21:35 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:35:19 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int	ft_wordlen(char const *str, char sep, int i)
 
 void	ft_freetab(char **s)
 {
-	if (!s)
-		return ;
 	int	i;
 	int	len;
 
+	if (!s)
+		return ;
 	i = 0;
 	len = 0;
 	while (s[len])

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 23:58:47 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/17 17:23:57 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:53:35 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 void	file_error(char *file)
 {
 	if (access(file, F_OK) == -1)
+	{	
+		free(file);
 		exit(126);
+	}
 	else if (access(file, X_OK) == -1)
+	{
+		free(file);
 		exit(1);
+	}
 }
 
 void	cmd_error(char *cmd)
@@ -53,12 +59,12 @@ void	check_status(int wpid, char *cmd, char *file)
 
 void	wait_for_all(t_data *data, t_pip *pip)
 {
-	int	i;
+	int		i;
+	char	*file;
 
 	i = 0;
 	while (i < data->cmd_count)
 	{
-		char	*file;
 		if (i == 0)
 			file = data->infile;
 		else if (i == 1)
@@ -76,8 +82,10 @@ void	free_struct(t_data *data, t_pip *pip)
 	i = 0;
 	while (i < data->cmd_count)
 	{
-		if (pip[i].options)
+		if (pip && pip[i].options)
 			ft_freetab(pip[i].options);
+		if (pip[i].abs_path && data->is_abs == 0)
+			free(pip[i].abs_path);
 		i++;
 	}
 	free(pip);

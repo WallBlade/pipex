@@ -6,25 +6,25 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:47:39 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/11/15 00:16:18 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:32:05 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	ft_strlen(const char *s)
+int	ft_strlen(char *s)
 {
-	if (!s)
-		return (0);
 	unsigned int	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;
 	return (i);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, int n)
+int	ft_strncmp(char *s1, char *s2, int n)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int	ft_strncmp(const char *s1, const char *s2, int n)
 	return (0);
 }
 
-char	*ft_strnstr(const char *str, const char *to_find, int n)
+char	*ft_strnstr(char *str, char *to_find, int n)
 {
 	int	i;
 	int	j;

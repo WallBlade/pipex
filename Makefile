@@ -1,11 +1,10 @@
-SRC		=	srcs/main.c srcs/parsing.c srcs/utils.c srcs/utils_1.c srcs/child.c \
-			srcs/init.c srcs/error.c \
+SRC		=	srcs/main.c srcs/parsing.c srcs/utils.c srcs/utils_1.c srcs/child.c srcs/error.c srcs/init.c \
 
 OBJ		=	$(SRC:.c=.o)
 
 CC		=	cc
 RM		=	rm -rf
-CFLAGS	=	-Wall -Werror -Wextra -g -I./includes
+CFLAGS	=	-Wall -Werror -Wextra -I./includes
 
 NAME	=	pipex
 
